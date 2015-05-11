@@ -1,8 +1,8 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "resnerb";
-    $database = "videoDB";
+    $servername = "oniddb.cws.oregonstate.edu";
+    $username = "resnerb-db";
+    $password = "7qKnFUFXqMYOmsTZ";
+    $database = "resnerb-db";
     
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $database);
@@ -13,7 +13,7 @@
     }
     echo "Connected successfully<br>";
     
-    $sql = "DELETE FROM Videos WHERE id=" . $_POST["rowID"];
+    $sql = "DELETE FROM Videos WHERE id=" . $_POST["removeRowID"];
 
     echo "DELETE sql: " . $sql . "<br>";
     

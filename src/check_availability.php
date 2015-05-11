@@ -13,17 +13,26 @@
     }
     echo "Connected successfully<br>";
     
-    $sql = "SELECT id FROM Videos";
+    $sql = "SELECT * FROM Videos WHERE id=" . $_POST["checkRowID"];
+    
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
         // Delete each row from the table
         while($row = $result->fetch_assoc()) {
-            $sql = "DELETE FROM Videos WHERE id=" . $row["id"];
+            $availStatus = 1;
+            if ($row["availability"])
+            {
+                $availStatus = 0;
+            }
+            $sql = "UPDATE Videos SET availability=" . $availStatus . " WHERE id=" . $row["id"];
+            
+            echo "UPDATE of availability: " . $sql . "<br>";
+            
             if ($conn->query($sql) === TRUE) {
-                echo "Record deleted successfully";
+                echo "Record updated successfully";
             } else {
-                die("Error deleting record: " . mysqli_connect_error());
+                die("Error updating record: " . mysqli_connect_error());
                 //echo "Error deleting record: " . $conn->error;
             }
         }

@@ -13,25 +13,16 @@
     }
     echo "Connected successfully<br>";
     
-    //mysqli_select_db($conn, $database);
+    $sql = "DELETE FROM Videos WHERE id=" . $_POST["rowID"];
+
+    echo "DELETE sql: " . $sql . "<br>";
     
-    $availStatus = true;
-    
-    $sql="INSERT INTO Videos (availability, title, category, minutes)
-    VALUES
-    ('$availStatus','$_POST[title]','$_POST[category]','$_POST[length]')";
-    
-    echo $sql . "<br>";
-    
-    if (mysqli_query($conn, $sql))
-    {
-        echo "New record created successfully<br>";
+    if ($conn->query($sql) === TRUE) {
+        echo "Record deleted successfully";
+    } else {
+        die("Error deleting record: " . mysqli_connect_error());
+        //echo "Error deleting record: " . $conn->error;
     }
-    else
-    {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-    //echo "Record added";
     
     mysqli_close($conn);
     // Send it back to the videos page

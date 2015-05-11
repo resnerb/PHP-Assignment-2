@@ -15,12 +15,12 @@
         die ("Connection failed: " . $conn->connect_error);
     }
     //Create database if it doesn't already exist
-    $sql = "CREATE DATABASE IF NOT EXISTS " . $database;
-    if ($conn->query($sql) === FALSE)
-    {
-        echo "Error creating database: " . $conn->error;
+    //$sql = "CREATE DATABASE IF NOT EXISTS " . $database;
+    //if ($conn->query($sql) === FALSE)
+    //{
+        //echo "Error creating database: " . $conn->error;
         //TODO Should exit if database can't be created
-    }
+    //}
     
     // Select the videoDB as the default database
     mysqli_select_db($conn, $database);

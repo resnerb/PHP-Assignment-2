@@ -35,6 +35,11 @@
     
     mysqli_close($conn);
     // Send it back to the videos page
+    
+    //This worked on my local machine, but after putting it up on the OSU server
+    //it stopped going back to the main videos.php page
+    //Tried location: http://web.engr.oregonstate.edu/~resnerb/videos.php
+    //Tried location: /nfs/stak/students/r/resnerb/public_html/videos.php
     header("location: videos.php");
     exit();
 ?>
